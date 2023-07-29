@@ -58,12 +58,6 @@ print(f"Incorrect: {incorrect}")
 print(f"Accuracy: {100 * correct / total:.2f}%")
 
 
-
-
-
-
-
-
 # Train model on training set
 X_training = [row["evidence"] for row in training]
 y_training = [row["label"] for row in training]
@@ -93,14 +87,6 @@ print(f"Incorrect: {incorrect}")
 print(f"Accuracy: {100 * correct / total:.2f}%")
 
 
-
-
-
-
-
-
-
-
 # Train model on training set
 X_training = [row["evidence"] for row in training]
 y_training = [row["label"] for row in training]
@@ -128,11 +114,6 @@ print(f"Results for model {type(model3)._name_}")
 print(f"Correct: {correct}")
 print(f"Incorrect: {incorrect}")
 print(f"Accuracy: {100 * correct / total:.2f}%")
-
-
-
-
-
 
 
 # Train model on training set
