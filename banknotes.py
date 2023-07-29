@@ -7,12 +7,12 @@ from sklearn.linear_model import Perceptron
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 
-model = Perceptron()
-# model = svm.SVC()
-# model = KNeighborsClassifier(n_neighbors=1)
-# model = GaussianNB()
+model1 = Perceptron()
+model2= svm.SVC()
+model3= KNeighborsClassifier(n_neighbors=1)
+model4= GaussianNB()
 
-# Read data in from file
+# Reading the data from file
 with open("banknotes.csv") as f:
     reader = csv.reader(f)
     next(reader)
@@ -24,21 +24,55 @@ with open("banknotes.csv") as f:
             "label": "Authentic" if row[4] == "0" else "Counterfeit"
         })
 
-# Separate data into training and testing groups
+# Separating the data into training and testing groups
 holdout = int(0.40 * len(data))
 random.shuffle(data)
 testing = data[:holdout]
 training = data[holdout:]
 
+# Training the model on training set
+X_training = [row["evidence"] for row in training]
+y_training = [row["label"] for row in training]
+model1.fit(X_training, y_training)
+
+# Making predictions on the testing set
+X_testing = [row["evidence"] for row in testing]
+y_testing = [row["label"] for row in testing]
+predictions = model1.predict(X_testing)
+
+# Computing how well we performed
+correct = 0
+incorrect = 0
+total = 0
+for actual, predicted in zip(y_testing, predictions):
+    total += 1
+    if actual == predicted:
+        correct += 1
+    else:
+        incorrect += 1
+
+# Print results
+print(f"Results for model {type(model1)._name_}")
+print(f"Correct: {correct}")
+print(f"Incorrect: {incorrect}")
+print(f"Accuracy: {100 * correct / total:.2f}%")
+
+
+
+
+
+
+
+
 # Train model on training set
 X_training = [row["evidence"] for row in training]
 y_training = [row["label"] for row in training]
-model.fit(X_training, y_training)
+model2.fit(X_training, y_training)
 
 # Make predictions on the testing set
 X_testing = [row["evidence"] for row in testing]
 y_testing = [row["label"] for row in testing]
-predictions = model.predict(X_testing)
+predictions = model2.predict(X_testing)
 
 # Compute how well we performed
 correct = 0
@@ -52,7 +86,79 @@ for actual, predicted in zip(y_testing, predictions):
         incorrect += 1
 
 # Print results
-print(f"Results for model {type(model).__name__}")
+print(f"         ")
+print(f"Results for model {type(model2)._name_}")
+print(f"Correct: {correct}")
+print(f"Incorrect: {incorrect}")
+print(f"Accuracy: {100 * correct / total:.2f}%")
+
+
+
+
+
+
+
+
+
+
+# Train model on training set
+X_training = [row["evidence"] for row in training]
+y_training = [row["label"] for row in training]
+model3.fit(X_training, y_training)
+
+# Make predictions on the testing set
+X_testing = [row["evidence"] for row in testing]
+y_testing = [row["label"] for row in testing]
+predictions = model3.predict(X_testing)
+
+# Compute how well we performed
+correct = 0
+incorrect = 0
+total = 0
+for actual, predicted in zip(y_testing, predictions):
+    total += 1
+    if actual == predicted:
+        correct += 1
+    else:
+        incorrect += 1
+
+# Print results
+print(f"         ")
+print(f"Results for model {type(model3)._name_}")
+print(f"Correct: {correct}")
+print(f"Incorrect: {incorrect}")
+print(f"Accuracy: {100 * correct / total:.2f}%")
+
+
+
+
+
+
+
+# Train model on training set
+X_training = [row["evidence"] for row in training]
+y_training = [row["label"] for row in training]
+model4.fit(X_training, y_training)
+
+# Make predictions on the testing set
+X_testing = [row["evidence"] for row in testing]
+y_testing = [row["label"] for row in testing]
+predictions = model4.predict(X_testing)
+
+# Compute how well we performed
+correct = 0
+incorrect = 0
+total = 0
+for actual, predicted in zip(y_testing, predictions):
+    total += 1
+    if actual == predicted:
+        correct += 1
+    else:
+        incorrect += 1
+
+# Print results
+print(f"         ")
+print(f"Results for model {type(model4)._name_}")
 print(f"Correct: {correct}")
 print(f"Incorrect: {incorrect}")
 print(f"Accuracy: {100 * correct / total:.2f}%")
