@@ -1,19 +1,16 @@
 # COUNTERFIET-BANKNOTE-DETECTION-SYSTEM
 # BanknoteClassificationModel
-The aim is to predict whether a given banknote is authentic or counterfeit given a number of measures taken from a photograph.
+This project aims to determine the authenticity of a currency note based on various measures extracted from a photograph, distinguishing between genuine and counterfeit bills.
 
-IMPLEMENTED ALGORITHMS:
+ALGORITHMS USED:
 1. Support Vector Machine
 2. K Nearest Neighbor
 3. Gaussian Naive Bayes
 4. Perceptron Learning
-
-
 
 Machine learning libraries & module:
 1. Scikit learn Library
 2. csv module
 3. random module
 
-
-Result: I have compared four different algorithms in terms of accuracy and concluded that the KNN & SVM algorithms are the best algorithms for banknote authentication with an accuracy of 100% & 99.45%.
+RESULT:The analysis of four distinct algorithms revealed that the KNN and SVM models outperform others in terms of accuracy for banknote authentication, achieving accuracies of 100% and 99.45%, respectively.
